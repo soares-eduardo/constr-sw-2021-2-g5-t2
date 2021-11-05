@@ -1,0 +1,174 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CONSTR-SW-2021-2-G5 | T2",
+        "description": "Eduardo Soares, Gabriel Fanto, João Brentano e Sofia Arend.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/turma": {
+            "post": {
+                "summary": "Registrar uma turma.",
+                "tags": ["Turma"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Turma"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "numero": 31,
+                                        "ano": 2021,
+                                        "semestre": 2,
+                                        "disciplina": "61843c585bb2b615ba46af14",
+                                        "horario": "NP"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Turma registrada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não autorizado."
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado."
+                    }
+                }
+            },
+            "get": {
+                "summary": "Listar todas as turmas.",
+                "tags": ["Turma"],
+                "responses": {
+                    "200": {
+                        "description": "Turmas listadas com sucesso."
+                    }
+                }
+            }
+        },
+        "/disciplina": {
+            "post": {
+                "summary": "Registrar uma disciplina.",
+                "tags": ["Disciplina"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Disciplina"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "nome": "Projeto e Arquitetura de Software",
+                                        "validade": 2021,
+                                        "objetivos": "Aplicar técnicas de reutilização de software.",
+                                        "ementa": "Conhecimento das arquiteturas dirigidas por modelos. Desenvolvimento e uso de ferramentas de reutilização de software.",
+                                        "codigo": "NP",
+                                        "creditos": 6,
+                                        "cargaHoraria": 80 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Disciplina registrada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Não autorizado."
+                    },
+                    "404": {
+                        "description": "Usuário não encontrada."
+                    }
+                }
+            },
+            "get": {
+                "summary": "Listar todas as disciplinas.",
+                "tags": ["Disciplina"],
+                "responses": {
+                    "200": {
+                        "description": "Disciplinas listadas com sucesso."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Disciplina": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "validade": {
+                        "type": "string"
+                    },
+                    "objetivos": {
+                        "type": "string"
+                    },
+                    "ementa": {
+                        "type": "string"
+                    },
+                    "codigo": {
+                        "type": "number"
+                    },
+                    "creditos": {
+                        "type": "number"
+                    },
+                    "cargaHoraria": {
+                        "type": "number"
+                    }    
+                }
+            },
+            "Turma": {
+                "type": "object",
+                "properties": {
+                    "numero": {
+                        "type": "number"
+                    },
+                    "ano": {
+                        "type": "number"
+                    },
+                    "semestre": {
+                        "type": "number"
+                    },
+                    "disciplina": {
+                        "type": "string"
+                    },
+                    "horario": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
