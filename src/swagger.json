@@ -17,7 +17,7 @@
                                 "$ref": "#/components/schemas/Turma"
                             },
                             "examples": {
-                                "user": {
+                                "turma": {
                                     "value": {
                                         "numero": 31,
                                         "ano": 2021,
@@ -38,7 +38,7 @@
                                 "schema": {
                                     "type": "object",
                                     "items": {
-                                        "$ref": "#/components/schemas/User"
+                                        "$ref": "#/components/schemas/Turma"
                                     }
                                 }
                             }
@@ -73,13 +73,13 @@
                                 "$ref": "#/components/schemas/Disciplina"
                             },
                             "examples": {
-                                "user": {
+                                "disciplina": {
                                     "value": {
                                         "nome": "Projeto e Arquitetura de Software",
                                         "validade": 2021,
                                         "objetivos": "Aplicar técnicas de reutilização de software.",
                                         "ementa": "Conhecimento das arquiteturas dirigidas por modelos. Desenvolvimento e uso de ferramentas de reutilização de software.",
-                                        "codigo": "NP",
+                                        "codigo": 12,
                                         "creditos": 6,
                                         "cargaHoraria": 80 
                                     }
@@ -96,7 +96,7 @@
                                 "schema": {
                                     "type": "object",
                                     "items": {
-                                        "$ref": "#/components/schemas/User"
+                                        "$ref": "#/components/schemas/Disciplina"
                                     }
                                 }
                             }
@@ -106,7 +106,7 @@
                         "description": "Não autorizado."
                     },
                     "404": {
-                        "description": "Usuário não encontrada."
+                        "description": "Usuário não encontrado."
                     }
                 }
             },
