@@ -34,8 +34,8 @@ class App {
         let password = process.env.DATABASE_PASSWORD;
 
         mongoose.connect(
-            `mongodb+srv://${username}:${password}@sandbox.xhgsj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-            )
+            `mongodb+srv://${username}:${password}@sandbox.xhgsj.mongodb.net/constr-sw-2021-g5-t2?retryWrites=true&w=majority`
+        )
     }
 
     private routes(): void {
