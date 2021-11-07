@@ -1,8 +1,9 @@
-import { Request, Response } from "express"
+import { Request, Response } from "express";
 
 import Turma from "../../schemas/Turma";
-import { StatusCodes } from 'http-status-codes';
+import StatusCodes from 'http-status-codes';
 import { newTurma } from "../../schemas/validate-schemas";
+import Disciplina from "../../schemas/Disciplina";
 
 /**
  * 
@@ -10,6 +11,40 @@ import { newTurma } from "../../schemas/validate-schemas";
  * 
  */
 export const createTurma = async (req: Request, res: Response): Promise<Response> => {
+
+    // Verify if the field is empty
+
+    if (!req.body.disciplina) {
+
+        return res
+            .status(StatusCodes.BAD_REQUEST)
+            .json("Field {disciplina} is a required.")
+    }
+
+    // Check if the given discipline exists
+
+    try {
+
+        const dbRes = await Disciplina.findById(req.body.disciplina);
+
+        if (dbRes == null) {
+
+            console.log("No records found with the given discipline.")
+
+            return res
+                .status(StatusCodes.NOT_FOUND)
+                .json("No records found with the given discipline.");
+        }
+    } catch (err) {
+
+        console.log('Error returning a MongoDB instance.', err);
+
+        return res
+            .status(StatusCodes.INTERNAL_SERVER_ERROR)
+            .json(err);
+    }
+
+    // Creates a new Turma instance
 
     const turma = newTurma(req.body);
 
@@ -21,6 +56,8 @@ export const createTurma = async (req: Request, res: Response): Promise<Response
             .status(StatusCodes.BAD_REQUEST)
             .json(turma.message);
     }
+
+    // Register the documento on MongoDB
 
     try {
 

@@ -62,6 +62,59 @@
                 }
             }
         },
+        "/turma/{id}": {
+          "delete": {
+                "summary": "Deletar turma pelo ID",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successfully deleted user."
+                    },
+                    "404": {
+                        "description": "No records found."
+                    },
+                    "403": {
+                        "description": "Somente adminstrador pode executar esta operação."
+                    }
+                }
+            },
+            "get": {
+                "summary": "Listar turmas pelo semestre e horario.",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "value": "6186f7d5a908eaa61845505d"
+                    },
+                    {
+                        "name": "semestre",
+                        "in": "query",
+                        "required": true,
+                        "value": 2
+                    },
+                    {
+                        "name": "horario",
+                        "in": "query",
+                        "required": true,
+                        "value": "NP"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Turmas listadas com sucesso."
+                    }
+                }   
+            }  
+        },
         "/disciplina": {
             "post": {
                 "summary": "Registrar uma disciplina.",
@@ -118,6 +171,60 @@
                         "description": "Disciplinas listadas com sucesso."
                     }
                 }
+            }
+        },
+        "/disciplina/{id}": {
+            "delete": {
+                "summary": "Deletar uma disciplina pelo ID.",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Deletar uma disciplina pelo ID.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Turma deletada com sucesso."
+                    },
+                    "404": {
+                        "description": "No records found."
+                    },
+                    "403": {
+                        "description": "Somente adminstrador pode executar esta operação."
+                    }
+                }
+            },
+            "get": {
+                "summary": "Listar disciplinas pela carga horaria e validade.",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "value": "6186e1606eeafc098dbfa83f"
+                    },
+                    {
+                        "name": "cargaHoraria",
+                        "in": "query",
+                        "required": true,
+                        "value": 60
+                    },
+                    {
+                        "name": "validade",
+                        "in": "query",
+                        "required": true,
+                        "value": 2021
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Disciplinas listadas com sucesso."
+                    }
+                }   
             }
         }
     },
