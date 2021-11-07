@@ -17,7 +17,7 @@
                                 "$ref": "#/components/schemas/Turma"
                             },
                             "examples": {
-                                "user": {
+                                "turma": {
                                     "value": {
                                         "numero": 31,
                                         "ano": 2021,
@@ -38,7 +38,7 @@
                                 "schema": {
                                     "type": "object",
                                     "items": {
-                                        "$ref": "#/components/schemas/User"
+                                        "$ref": "#/components/schemas/Turma"
                                     }
                                 }
                             }
@@ -62,10 +62,69 @@
                 }
             }
         },
-        "/turma/:id": {
+
+        "/turma/{id}": {
+          "delete": {
+                "summary": "Deletar turma pelo ID",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successfully deleted user."
+                    },
+                    "404": {
+                        "description": "No records found."
+                    },
+                    "403": {
+                        "description": "Somente adminstrador pode executar esta operação."
+                    }
+                }
+            },
+            "get": {
+                "summary": "Listar turmas pelo semestre e horario.",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "value": "6186f7d5a908eaa61845505d"
+                    },
+                    {
+                        "name": "semestre",
+                        "in": "query",
+                        "required": true,
+                        "value": 2
+                    },
+                    {
+                        "name": "horario",
+                        "in": "query",
+                        "required": true,
+                        "value": "NP"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Turmas listadas com sucesso."
+                    }
+                }   
+            },
             "put": {
                 "summary": "Editar uma Turma pelo ID",
                 "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -94,7 +153,7 @@
                         "description": "Turma não encontrada."
                     }
                 }
-            }
+            }  
         },
         "/disciplina": {
             "post": {
@@ -107,13 +166,13 @@
                                 "$ref": "#/components/schemas/Disciplina"
                             },
                             "examples": {
-                                "user": {
+                                "disciplina": {
                                     "value": {
                                         "nome": "Projeto e Arquitetura de Software",
                                         "validade": 2021,
                                         "objetivos": "Aplicar técnicas de reutilização de software.",
                                         "ementa": "Conhecimento das arquiteturas dirigidas por modelos. Desenvolvimento e uso de ferramentas de reutilização de software.",
-                                        "codigo": "NP",
+                                        "codigo": 12,
                                         "creditos": 6,
                                         "cargaHoraria": 80 
                                     }
@@ -130,7 +189,7 @@
                                 "schema": {
                                     "type": "object",
                                     "items": {
-                                        "$ref": "#/components/schemas/User"
+                                        "$ref": "#/components/schemas/Disciplina"
                                     }
                                 }
                             }
@@ -140,7 +199,7 @@
                         "description": "Não autorizado."
                     },
                     "404": {
-                        "description": "Usuário não encontrada."
+                        "description": "Usuário não encontrado."
                     }
                 }
             },
@@ -154,10 +213,69 @@
                 }
             }
         },
-        "/disciplina/:id": {
+        "/disciplina/{id}": {
+            "delete": {
+                "summary": "Deletar uma disciplina pelo ID.",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Deletar uma disciplina pelo ID.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Turma deletada com sucesso."
+                    },
+                    "404": {
+                        "description": "No records found."
+                    },
+                    "403": {
+                        "description": "Somente adminstrador pode executar esta operação."
+                    }
+                }
+            },
+            "get": {
+                "summary": "Listar disciplinas pela carga horaria e validade.",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "value": "6186e1606eeafc098dbfa83f"
+                    },
+                    {
+                        "name": "cargaHoraria",
+                        "in": "query",
+                        "required": true,
+                        "value": 60
+                    },
+                    {
+                        "name": "validade",
+                        "in": "query",
+                        "required": true,
+                        "value": 2021
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Disciplinas listadas com sucesso."
+                    }
+                }
+            },
             "put": {
                 "summary": "Editar uma Disciplina pelo ID",
                 "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {

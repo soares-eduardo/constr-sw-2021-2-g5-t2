@@ -148,7 +148,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"numero\": 456,\r\n    \"ano\": 2021,\r\n    \"semestre\": 2,\r\n    \"disciplina\": \"Construção de Software\",\r\n    \"horario\": \"19:00\"\r\n}",
+							"raw": "{\r\n    \"numero\": 456,\r\n    \"ano\": 2021,\r\n    \"semestre\": 2,\r\n    \"disciplina\": \"{{idDisciplina}}\",\r\n    \"horario\": \"NP\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"disciplina\": \"Editado o nome da Disciplina\",\r\n    \"horario\": \"LM\"\r\n}",
+							"raw": "{\r\n    \"horario\": \"LM\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

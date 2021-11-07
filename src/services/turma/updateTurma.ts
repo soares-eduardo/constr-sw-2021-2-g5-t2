@@ -11,32 +11,40 @@ export const updateTurma = async (req: Request, res: Response): Promise<Response
         }
     });
     
-    if(turma) {
-        turma._id = req.params.id
-
-        if(req.body.numero){
-            turma.numero = req.body.numero;
+    try{
+        if(turma) {
+            turma._id = req.params.id
+    
+            if(req.body.numero){
+                turma.numero = req.body.numero;
+            }
+    
+            if(req.body.ano){
+                turma.ano = req.body.ano;
+            }
+    
+            if(req.body.semestre){
+                turma.semestre = req.body.semestre;
+            }
+    
+            if(req.body.disciplina){
+                turma.disciplina = req.body.disciplina;
+            }
+    
+            if(req.body.horario){
+                turma.horario = req.body.horario;
+            }
+    
+            await turma.save();
+            return res.status(StatusCodes.OK).json(turma);
+        }else{
+            return res.status(StatusCodes.NOT_FOUND).json("No records found with the given ID.");
         }
+    }catch(err){
+        console.log('Error editing data from MongoDB.', err);
 
-        if(req.body.ano){
-            turma.ano = req.body.ano;
-        }
-
-        if(req.body.semestre){
-            turma.semestre = req.body.semestre;
-        }
-
-        if(req.body.disciplina){
-            turma.disciplina = req.body.disciplina;
-        }
-
-        if(req.body.horario){
-            turma.horario = req.body.horario;
-        }
-
-        await turma.save();
-        return res.status(StatusCodes.OK).json(turma);
-    }else{
-        return res.status(StatusCodes.NOT_FOUND).json(turma);
+        return res
+            .status(StatusCodes.INTERNAL_SERVER_ERROR)
+            .json(err);
     }
 }
