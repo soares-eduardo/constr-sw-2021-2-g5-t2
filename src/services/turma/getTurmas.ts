@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 
 /**
  * 
- * @returns
+ * @returns Returns a list of all turmas with their data.
  * 
  */
 export const getTurmas = async (req: Request, res: Response): Promise<Response> => {

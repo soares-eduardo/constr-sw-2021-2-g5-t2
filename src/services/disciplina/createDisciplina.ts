@@ -11,6 +11,8 @@ import { newDisciplina } from './../../schemas/validate-schemas';
  */
 export const createDisciplina = async (req: Request, res: Response): Promise<Response> => {
 
+    // Create a Disciplina instance
+
     const disciplina = newDisciplina(req.body);
 
     if (disciplina.statusCode != StatusCodes.OK) {
@@ -21,6 +23,8 @@ export const createDisciplina = async (req: Request, res: Response): Promise<Res
             .status(StatusCodes.BAD_REQUEST)
             .json(disciplina.message);
     }
+
+    // Register the instance on MongoDB
 
     try {
 
