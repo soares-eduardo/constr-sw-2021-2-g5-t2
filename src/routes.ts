@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { createDisciplina } from './services/disciplina/createDisciplina';
-import { deleteDisciplina } from "./services/disciplina/deleteDisciplina";
+import { updateDisciplina } from "./services/disciplina/updateDisciplina";
 import { getDisciplinas } from "./services/disciplina/getDisciplinas";
-import { getDisciplinasByValidade } from "./services/disciplina/getDisciplinasByValidade";
 import { createTurma } from "./services/turma/createTurma";
-import { deleteTurma } from "./services/turma/deleteTurma";
 import { getTurmas } from "./services/turma/getTurmas";
+import { updateTurma } from "./services/turma/updateTurma";
+import { deleteDisciplina } from "./services/disciplina/deleteDisciplina";
+import { getDisciplinasByValidade } from "./services/disciplina/getDisciplinasByValidade";
+import { deleteTurma } from "./services/turma/deleteTurma";
 import { getTurmasByHorario } from './services/turma/getTurmasByHorario';
 
 
@@ -25,6 +27,10 @@ router.post('/disciplina', (request, response) => {
     return createDisciplina(request, response);
 });
 
+router.put('/disciplina/:id', (request,response) => {
+    return updateDisciplina(request,response);
+});
+
 router.delete('/disciplina/:id', (request, response) => {
     return deleteDisciplina(request, response, request.params.id);
 });
@@ -41,6 +47,11 @@ router.get('/turma/:id', (request, response) => {
 
 router.post('/turma', (request, response) => {
     return createTurma(request, response);
+});
+
+router.put('/turma/:id', (request,response) => {
+     return updateTurma(request,response);
+
 });
 
 router.delete('/turma/:id', (request, response) => {

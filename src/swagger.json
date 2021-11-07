@@ -62,6 +62,7 @@
                 }
             }
         },
+
         "/turma/{id}": {
           "delete": {
                 "summary": "Deletar turma pelo ID",
@@ -113,6 +114,45 @@
                         "description": "Turmas listadas com sucesso."
                     }
                 }   
+            },
+            "put": {
+                "summary": "Editar uma Turma pelo ID",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Turma"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "numero": 31,
+                                        "ano": 2021,
+                                        "semestre": 2,
+                                        "disciplina": "61843c585bb2b615ba46af14",
+                                        "horario": "NP"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Turma editada com sucesso."
+                    },
+                    "400": {
+                        "description": "Turma não encontrada."
+                    }
+                }
             }  
         },
         "/disciplina": {
@@ -224,7 +264,48 @@
                     "200": {
                         "description": "Disciplinas listadas com sucesso."
                     }
-                }   
+                }
+            },
+            "put": {
+                "summary": "Editar uma Disciplina pelo ID",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Disciplina"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "nome": "Projeto e Arquitetura de Software",
+                                        "validade": 2021,
+                                        "objetivos": "Aplicar técnicas de reutilização de software.",
+                                        "ementa": "Conhecimento das arquiteturas dirigidas por modelos. Desenvolvimento e uso de ferramentas de reutilização de software.",
+                                        "codigo": "NP",
+                                        "creditos": 6,
+                                        "cargaHoraria": 80 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Disciplina editada com sucesso."
+                    },
+                    "400": {
+                        "description": "Disciplina não encontrada."
+                    }
+                }
             }
         }
     },
