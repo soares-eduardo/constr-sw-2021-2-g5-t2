@@ -87,7 +87,7 @@
                 }
             },
             "get": {
-                "summary": "Listar turmas pelo semestre e horario.",
+                "summary": "Retornar turma pelo ID.",
                 "tags": ["Turma"],
                 "parameters": [
                     {
@@ -95,23 +95,14 @@
                         "in": "path",
                         "required": true,
                         "value": "6186f7d5a908eaa61845505d"
-                    },
-                    {
-                        "name": "semestre",
-                        "in": "query",
-                        "required": true,
-                        "value": 2
-                    },
-                    {
-                        "name": "horario",
-                        "in": "query",
-                        "required": true,
-                        "value": "NP"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Turmas listadas com sucesso."
+                        "description": "Turma encontrada com sucesso."
+                    },
+                    "404": {
+                        "description": "No records found."
                     }
                 }   
             },
@@ -153,8 +144,79 @@
                         "description": "Turma não encontrada."
                     }
                 }
-            }  
+            },
+            "patch": {
+                "summary": "Editar uma Turma pelo ID",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Turma"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "numero": 31,
+                                        "ano": 2021,
+                                        "semestre": 2,
+                                        "disciplina": "61843c585bb2b615ba46af14",
+                                        "horario": "NP"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Turma editada com sucesso."
+                    },
+                    "400": {
+                        "description": "Turma não encontrada."
+                    }
+                }
+            } 
         },
+        "/turma/horario": {
+            "get": {
+                "summary": "Listar turmas pelo semestre e horario.",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "value": "6186f7d5a908eaa61845505d"
+                    },
+                    {
+                        "name": "semestre",
+                        "in": "query",
+                        "required": true,
+                        "value": 2
+                    },
+                    {
+                        "name": "horario",
+                        "in": "query",
+                        "required": true,
+                        "value": "NP"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Turmas listadas com sucesso."
+                    }
+                }   
+            }
+        },
+
         "/disciplina": {
             "post": {
                 "summary": "Registrar uma disciplina.",
@@ -238,7 +300,7 @@
                 }
             },
             "get": {
-                "summary": "Listar disciplinas pela carga horaria e validade.",
+                "summary": "Retornar disciplina por ID",
                 "tags": ["Disciplina"],
                 "parameters": [
                     {
@@ -246,23 +308,14 @@
                         "in": "path",
                         "required": true,
                         "value": "6186e1606eeafc098dbfa83f"
-                    },
-                    {
-                        "name": "cargaHoraria",
-                        "in": "query",
-                        "required": true,
-                        "value": 60
-                    },
-                    {
-                        "name": "validade",
-                        "in": "query",
-                        "required": true,
-                        "value": 2021
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Disciplinas listadas com sucesso."
+                        "description": "Disciplinas encontrada com sucesso."
+                    },
+                    "404": {
+                        "description": "No records found."
                     }
                 }
             },
@@ -304,6 +357,78 @@
                     },
                     "400": {
                         "description": "Disciplina não encontrada."
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Editar uma Disciplina pelo ID",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Disciplina"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "nome": "Projeto e Arquitetura de Software",
+                                        "validade": 2021,
+                                        "objetivos": "Aplicar técnicas de reutilização de software.",
+                                        "ementa": "Conhecimento das arquiteturas dirigidas por modelos. Desenvolvimento e uso de ferramentas de reutilização de software.",
+                                        "codigo": "NP",
+                                        "creditos": 6,
+                                        "cargaHoraria": 80 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Disciplina editada com sucesso."
+                    },
+                    "400": {
+                        "description": "Disciplina não encontrada."
+                    }
+                }
+            }
+        },
+        "/disciplina/validade": {
+            "get": {
+                "summary": "Listar disciplinas pela carga horaria e validade.",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "value": "6186e1606eeafc098dbfa83f"
+                    },
+                    {
+                        "name": "cargaHoraria",
+                        "in": "query",
+                        "required": true,
+                        "value": 60
+                    },
+                    {
+                        "name": "validade",
+                        "in": "query",
+                        "required": true,
+                        "value": 2021
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Disciplinas listadas com sucesso."
                     }
                 }
             }
