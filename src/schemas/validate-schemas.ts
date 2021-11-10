@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { ValidationResult } from "./custom-types";
+import { Turma, ValidationResult } from "./custom-types";
 
 export const newDisciplina = (body): ValidationResult => {
 
@@ -135,4 +135,60 @@ export const validateFieldsDisciplina = (body): ValidationResult => {
         statusCode: StatusCodes.OK,
         message: ''
     }
+}
+
+export const setPatchTurma = (body, turma) => {
+    if(body.numero){
+        turma.numero = body.numero;
+    }
+
+    if(body.ano){
+        turma.ano = body.ano;
+    }
+
+    if(body.semestre){
+        turma.semestre = body.semestre;
+    }
+
+    if(body.disciplina){
+        turma.disciplina = body.disciplina;
+    }
+
+    if(body.horario){
+        turma.horario = body.horario;
+    }
+
+    return turma;
+}
+
+export const setPatchDisciplina = (body, disciplina) => {
+    if(body.nome){
+        disciplina.nome = body.nome;
+    }
+
+    if(body.validade){
+        disciplina.validade = body.validade;
+    }
+
+    if(body.objetivos){
+        disciplina.objetivos = body.objetivos;
+    }
+
+    if(body.ementa){
+        disciplina.ementa = body.ementa;
+    }
+
+    if(body.codigo){
+        disciplina.codigo = body.codigo;
+    }
+
+    if(body.creditos){
+        disciplina.creditos = body.creditos;
+    }
+
+    if(body.cargaHoraria){
+        disciplina.cargaHoraria = body.cargaHoraria;
+    }
+
+    return disciplina;
 }

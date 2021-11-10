@@ -76,7 +76,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Successfully deleted user."
+                        "description": "Successfully deleted turma."
                     },
                     "404": {
                         "description": "No records found."
@@ -123,7 +123,7 @@
                                 "$ref": "#/components/schemas/Turma"
                             },
                             "examples": {
-                                "user": {
+                                "turma": {
                                     "value": {
                                         "numero": 31,
                                         "ano": 2021,
@@ -146,7 +146,7 @@
                 }
             },
             "patch": {
-                "summary": "Editar uma Turma pelo ID",
+                "summary": "Editar os atributos de uma Turma pelo ID",
                 "tags": ["Turma"],
                 "parameters": [
                     {
@@ -162,13 +162,10 @@
                                 "$ref": "#/components/schemas/Turma"
                             },
                             "examples": {
-                                "user": {
+                                "turma": {
                                     "value": {
-                                        "numero": 31,
-                                        "ano": 2021,
-                                        "semestre": 2,
-                                        "disciplina": "61843c585bb2b615ba46af14",
-                                        "horario": "NP"
+                                        "ano": 2022,
+                                        "semestre": 1
                                     }
                                 }
                             }
@@ -185,17 +182,11 @@
                 }
             } 
         },
-        "/turma/horario": {
+        "/turmas/horario": {
             "get": {
                 "summary": "Listar turmas pelo semestre e horario.",
                 "tags": ["Turma"],
                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "value": "6186f7d5a908eaa61845505d"
-                    },
                     {
                         "name": "semestre",
                         "in": "query",
@@ -336,13 +327,13 @@
                                 "$ref": "#/components/schemas/Disciplina"
                             },
                             "examples": {
-                                "user": {
+                                "disciplina": {
                                     "value": {
                                         "nome": "Projeto e Arquitetura de Software",
                                         "validade": 2021,
                                         "objetivos": "Aplicar técnicas de reutilização de software.",
                                         "ementa": "Conhecimento das arquiteturas dirigidas por modelos. Desenvolvimento e uso de ferramentas de reutilização de software.",
-                                        "codigo": "NP",
+                                        "codigo": 12,
                                         "creditos": 6,
                                         "cargaHoraria": 80 
                                     }
@@ -361,7 +352,7 @@
                 }
             },
             "patch": {
-                "summary": "Editar uma Disciplina pelo ID",
+                "summary": "Editar os atributos de uma Disciplina pelo ID",
                 "tags": ["Disciplina"],
                 "parameters": [
                     {
@@ -377,15 +368,10 @@
                                 "$ref": "#/components/schemas/Disciplina"
                             },
                             "examples": {
-                                "user": {
+                                "disciplina": {
                                     "value": {
-                                        "nome": "Projeto e Arquitetura de Software",
-                                        "validade": 2021,
-                                        "objetivos": "Aplicar técnicas de reutilização de software.",
-                                        "ementa": "Conhecimento das arquiteturas dirigidas por modelos. Desenvolvimento e uso de ferramentas de reutilização de software.",
-                                        "codigo": "NP",
-                                        "creditos": 6,
-                                        "cargaHoraria": 80 
+                                        "creditos": 8,
+                                        "cargaHoraria": 100 
                                     }
                                 }
                             }
@@ -402,17 +388,11 @@
                 }
             }
         },
-        "/disciplina/validade": {
+        "/disciplinas/validade": {
             "get": {
                 "summary": "Listar disciplinas pela carga horaria e validade.",
                 "tags": ["Disciplina"],
                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "value": "6186e1606eeafc098dbfa83f"
-                    },
                     {
                         "name": "cargaHoraria",
                         "in": "query",
