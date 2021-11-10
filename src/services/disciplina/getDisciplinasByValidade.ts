@@ -7,7 +7,7 @@ import Disciplina from "../../schemas/Disciplina";
  * @return Select documents based on carga horaria, validade and ID.
  * 
  */
-export const getDisciplinasByValidade = async (req: Request, res: Response, id: string): Promise<Response> => {
+export const getDisciplinasByValidade = async (req: Request, res: Response): Promise<Response> => {
 
     // Parse the given params to Number and String
 
@@ -21,8 +21,7 @@ export const getDisciplinasByValidade = async (req: Request, res: Response, id: 
         const dbRes = await Disciplina.find({
             $and: [
                 { "cargaHoraria": { $gt: cargaHoraria } },
-                { "validade": validade },
-                { "_id": id }
+                { "validade": validade }
             ]
         });
 
