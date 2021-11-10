@@ -7,6 +7,7 @@ import { newTurma } from "../../schemas/validate-schemas";
 export const updateTurma = async (req: Request, res: Response): Promise<Response> => {
 
     const updatedTurma = newTurma(req.body);
+
     if (updatedTurma.statusCode != StatusCodes.OK) {
 
         console.log("Error updating turma instance for MongoDB", updatedTurma.message);
@@ -22,22 +23,27 @@ export const updateTurma = async (req: Request, res: Response): Promise<Response
         }
     });
 
-    try{
-        if(turma) {
+    try {
+
+        if (turma) {
+
             turma.set(updatedTurma.turma);
             turma._id = req.params.id
-            
+
             await turma.save();
             return res
-            .status(StatusCodes.OK)
-            .json(turma);
-        }else{
+                .status(StatusCodes.OK)
+                .json(turma);
+
+        } else {
+            
             return res
-            .status(StatusCodes.NOT_FOUND)
-            .json("No records found with the given ID.");
+                .status(StatusCodes.NOT_FOUND)
+                .json("No records found with the given ID.");
         }
-    }catch (err) {
-        
+
+    } catch (err) {
+
         console.log('Error editing data from MongoDB.', err);
 
         return res
