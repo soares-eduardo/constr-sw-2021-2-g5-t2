@@ -63,29 +63,6 @@
             }
         },
 
-        "/turmas/ano": {
-            "get": {
-                "summary": "Retornar turmas pelo Ano.",
-                "tags": ["Turma"],
-                "parameters": [
-                    {
-                        "name": "ano",
-                        "in": "query",
-                        "required": true,
-                        "value": 2022
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Turmas encontradas com sucesso."
-                    },
-                    "404": {
-                        "description": "No records found."
-                    }
-                }
-            }
-        },
-
         "/turma/{id}": {
           "delete": {
                 "summary": "Deletar turma pelo ID",
@@ -228,6 +205,29 @@
                         "description": "Turmas listadas com sucesso."
                     }
                 }   
+            }
+        },
+        
+        "/turmas/ano": {
+            "get": {
+                "summary": "Retornar turmas pelo Ano.",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "ano",
+                        "in": "query",
+                        "required": true,
+                        "value": 2022
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Turmas encontradas com sucesso."
+                    },
+                    "404": {
+                        "description": "No records found."
+                    }
+                }
             }
         },
 
