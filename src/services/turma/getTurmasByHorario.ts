@@ -7,7 +7,7 @@ import Turma from "../../schemas/Turma";
  * @return Select documents based on semestre, horario and ID.
  * 
  */
-export const getTurmasByHorario = async (req: Request, res: Response, id: string): Promise<Response> => {
+export const getTurmasByHorario = async (req: Request, res: Response): Promise<Response> => {
 
     // Parse the given params to Number and String
 
@@ -23,8 +23,7 @@ export const getTurmasByHorario = async (req: Request, res: Response, id: string
         const dbRes = await Turma.find({
             $and: [
                 { "semestre": semestre },
-                { "horario": horario },
-                { "_id": id }
+                { "horario": horario }
             ]
         });
 
