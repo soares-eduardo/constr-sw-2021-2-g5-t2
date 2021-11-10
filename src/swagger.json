@@ -63,7 +63,7 @@
             }
         },
 
-        "/turmas": {
+        "/turmas/ano": {
             "get": {
                 "summary": "Retornar turmas pelo Ano.",
                 "tags": ["Turma"],
@@ -408,7 +408,7 @@
                 }
             }
         },
-        "/disciplinas": {
+        "/disciplinas/codigo": {
             "get": {
                 "summary": "Listar disciplinas pelo código.",
                 "tags": ["Disciplina"],

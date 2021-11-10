@@ -33,7 +33,7 @@ router.get('/disciplinas/validade', (request, response) => {
     return getDisciplinasByValidade(request, response);
 });
 
-router.get('/disciplinas', (request,response) => {
+router.get('/disciplinas/codigo', (request,response) => {
     return getDisciplinaByCodigo(request, response);
 });
 
@@ -67,7 +67,7 @@ router.get('/turmas/horario', (request, response) => {
     return getTurmasByHorario(request, response);
 });
 
-router.get('/turmas', (request,response) => {
+router.get('/turmas/ano', (request,response) => {
     return getTurmaByAno(request,response);
 })
 
