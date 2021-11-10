@@ -417,7 +417,7 @@
                         "name": "codigo",
                         "in": "query",
                         "required": true,
-                        "value": 60
+                        "value": 12
                     }
                 ],
                 "responses": {
