@@ -207,6 +207,29 @@
                 }   
             }
         },
+        
+        "/turmas/ano": {
+            "get": {
+                "summary": "Listar turmas pelo Ano.",
+                "tags": ["Turma"],
+                "parameters": [
+                    {
+                        "name": "ano",
+                        "in": "query",
+                        "required": true,
+                        "value": 2022
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Turmas encontradas com sucesso."
+                    },
+                    "404": {
+                        "description": "No records found."
+                    }
+                }
+            }
+        },
 
         "/disciplina": {
             "post": {
@@ -304,9 +327,6 @@
                 "responses": {
                     "200": {
                         "description": "Disciplinas encontrada com sucesso."
-                    },
-                    "404": {
-                        "description": "No records found."
                     }
                 }
             },
@@ -384,6 +404,25 @@
                     },
                     "400": {
                         "description": "Disciplina não encontrada."
+                    }
+                }
+            }
+        },
+        "/disciplinas/codigo": {
+            "get": {
+                "summary": "Listar disciplinas pelo código.",
+                "tags": ["Disciplina"],
+                "parameters": [
+                    {
+                        "name": "codigo",
+                        "in": "query",
+                        "required": true,
+                        "value": 12
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Disciplinas listadas com sucesso."
                     }
                 }
             }

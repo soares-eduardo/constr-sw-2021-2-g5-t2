@@ -5,12 +5,14 @@ import { patchDisciplina } from "./services/disciplina/patchDisciplina";
 import { getDisciplinas } from "./services/disciplina/getDisciplinas";
 import { getDisciplinaById } from "./services/disciplina/getDisciplinaById";
 import { getDisciplinasByValidade } from "./services/disciplina/getDisciplinasByValidade";
+import { getDisciplinaByCodigo } from "./services/disciplina/getDisciplinaByCodigo";
 import { deleteDisciplina } from "./services/disciplina/deleteDisciplina";
 import { createTurma } from "./services/turma/createTurma";
 import { updateTurma } from "./services/turma/updateTurma";
 import { patchTurma } from "./services/turma/patchTurma";
 import { getTurmas } from "./services/turma/getTurmas";
 import { getTurmaById } from './services/turma/getTurmaById';
+import { getTurmaByAno } from "./services/turma/getTurmaByAno";
 import { getTurmasByHorario } from './services/turma/getTurmasByHorario';
 import { deleteTurma } from "./services/turma/deleteTurma";
 
@@ -29,6 +31,10 @@ router.get('/disciplina/:id', (request, response) => {
 
 router.get('/disciplinas/validade', (request, response) => {
     return getDisciplinasByValidade(request, response);
+});
+
+router.get('/disciplinas/codigo', (request,response) => {
+    return getDisciplinaByCodigo(request, response);
 });
 
 router.post('/disciplina', (request, response) => {
@@ -60,6 +66,10 @@ router.get('/turma/:id', (request, response) => {
 router.get('/turmas/horario', (request, response) => {
     return getTurmasByHorario(request, response);
 });
+
+router.get('/turmas/ano', (request,response) => {
+    return getTurmaByAno(request,response);
+})
 
 router.post('/turma', (request, response) => {
     return createTurma(request, response);
