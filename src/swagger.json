@@ -210,7 +210,7 @@
         
         "/turmas/ano": {
             "get": {
-                "summary": "Retornar turmas pelo Ano.",
+                "summary": "Listar turmas pelo Ano.",
                 "tags": ["Turma"],
                 "parameters": [
                     {
