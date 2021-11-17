@@ -12,5 +12,5 @@ export const getDisciplinas = async (req: Request, res: Response): Promise<Respo
 
     const listDisciplinas = await Disciplina.find();
 
-    return res.status(StatusCodes.CREATED).json(listDisciplinas);
+    return res.status(StatusCodes.OK).json(listDisciplinas);
 }

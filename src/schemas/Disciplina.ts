@@ -1,16 +1,5 @@
 import { Schema, model } from "mongoose";
-
-interface Disciplina {
-
-    nome: string;
-    validade: string;
-    objetivos: string;
-    ementa: string;
-
-    codigo: number;
-    creditos: number;
-    cargaHoraria: number;
-}
+import { Disciplina } from "./custom-types";
 
 const DisciplinaSchema = new Schema({
     nome: String,

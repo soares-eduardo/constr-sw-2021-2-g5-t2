@@ -1,14 +1,5 @@
 import { Schema, model } from "mongoose";
-import Disciplina from "./Disciplina";
-
-interface Turma {
-
-    numero: number;
-    ano: number;
-    semestre: number;
-    disciplina: string;
-    horario: string;
-}
+import { Turma } from "./custom-types";
 
 const TurmaSchema = new Schema({
     numero: Number,
