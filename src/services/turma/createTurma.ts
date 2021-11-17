@@ -57,7 +57,7 @@ export const createTurma = async (req: Request, res: Response): Promise<Response
             .json(turma.message);
     }
 
-    // Register the documento on MongoDB
+    // Register the document on MongoDB
 
     try {
 

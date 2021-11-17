@@ -9,9 +9,9 @@ import { StatusCodes } from 'http-status-codes';
  * 
  */
 export const deleteDisciplina = async (req: Request, res: Response, id: string): Promise<Response> => {
-    
+
     // Verify if the given id is linked to a turma
-    
+
     try {
 
         const dbRes = await Turma.find({ "disciplina": id });

@@ -137,56 +137,58 @@ export const validateFieldsDisciplina = (body): ValidationResult => {
     }
 }
 
-export const setPatchTurma = (body, turma) => {
-    if(body.numero){
+export const setModifiedTurma = (body, turma) => {
+
+    if (body.numero) {
         turma.numero = body.numero;
     }
 
-    if(body.ano){
+    if (body.ano) {
         turma.ano = body.ano;
     }
 
-    if(body.semestre){
+    if (body.semestre) {
         turma.semestre = body.semestre;
     }
 
-    if(body.disciplina){
+    if (body.disciplina) {
         turma.disciplina = body.disciplina;
     }
 
-    if(body.horario){
+    if (body.horario) {
         turma.horario = body.horario;
     }
 
     return turma;
 }
 
-export const setPatchDisciplina = (body, disciplina) => {
-    if(body.nome){
+export const setModifiedDisciplina = (body, disciplina) => {
+
+    if (body.nome) {
         disciplina.nome = body.nome;
     }
 
-    if(body.validade){
+    if (body.validade) {
         disciplina.validade = body.validade;
     }
 
-    if(body.objetivos){
+    if (body.objetivos) {
         disciplina.objetivos = body.objetivos;
     }
 
-    if(body.ementa){
+    if (body.ementa) {
         disciplina.ementa = body.ementa;
     }
 
-    if(body.codigo){
+    if (body.codigo) {
         disciplina.codigo = body.codigo;
     }
 
-    if(body.creditos){
+    if (body.creditos) {
         disciplina.creditos = body.creditos;
     }
 
-    if(body.cargaHoraria){
+    if (body.cargaHoraria) {
         disciplina.cargaHoraria = body.cargaHoraria;
     }
 
