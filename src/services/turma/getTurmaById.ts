@@ -15,7 +15,14 @@ export const getTurmaById = async (req: Request, res: Response, id: string): Pro
 
         const dbRes = await Turma.findById(id);
 
-        console.log("Successfully found registers with the given id: ", id);
+        if (dbRes == null) {
+
+            return res
+                .status(StatusCodes.NOT_FOUND)
+                .json("No records found.");
+        }
+
+        console.log("Successfully found registers with the given id: ", dbRes);
 
         return res
             .status(StatusCodes.OK)

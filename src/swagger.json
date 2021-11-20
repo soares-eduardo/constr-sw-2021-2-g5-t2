@@ -23,6 +23,7 @@
                                         "ano": 2021,
                                         "semestre": 2,
                                         "disciplina": "61843c585bb2b615ba46af14",
+                                        "aula": "6199126a19f28621960d0f90",
                                         "horario": "NP"
                                     }
                                 }
@@ -129,6 +130,7 @@
                                         "ano": 2021,
                                         "semestre": 2,
                                         "disciplina": "61843c585bb2b615ba46af14",
+                                        "aula": "6199126a19f28621960d0f90",
                                         "horario": "NP"
                                     }
                                 }
@@ -494,6 +496,9 @@
                         "type": "number"
                     },
                     "disciplina": {
+                        "type": "string"
+                    },
+                    "aula": {
                         "type": "string"
                     },
                     "horario": {

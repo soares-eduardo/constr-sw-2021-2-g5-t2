@@ -4,6 +4,7 @@ export interface Turma {
     ano: number;
     semestre: number;
     disciplina: string;
+    aula: string;
     horario: string;
 }
 
@@ -12,7 +13,6 @@ export interface Disciplina {
     validade: string;
     objetivos: string;
     ementa: string;
-
     codigo: number;
     creditos: number;
     cargaHoraria: number;

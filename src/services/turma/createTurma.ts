@@ -4,6 +4,10 @@ import Turma from "../../schemas/Turma";
 import StatusCodes from 'http-status-codes';
 import { newTurma } from "../../schemas/validate-schemas";
 import Disciplina from "../../schemas/Disciplina";
+import axios from 'axios'
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 /**
  * 
@@ -38,6 +42,36 @@ export const createTurma = async (req: Request, res: Response): Promise<Response
     } catch (err) {
 
         console.log('Error returning a MongoDB instance.', err);
+
+        return res
+            .status(StatusCodes.INTERNAL_SERVER_ERROR)
+            .json(err);
+    }
+
+    /**
+     * 
+     * Get request to Aulas/Reservar microservice 
+     * in order to validade the given aula id
+     * 
+     */
+
+    const baseUrl = process.env.AULA_RESERVA_MS;
+    const requestUrl = `${baseUrl}/${req.body.aula}`;
+
+    try {
+
+        const axiosResponse = await axios.get(requestUrl);
+
+        if (axiosResponse.status != 200) {
+
+            return res
+                .status(StatusCodes.NOT_FOUND)
+                .json("No records found with the given aula id.")
+        }
+
+        console.log('Successfully found the given aula on Aula/Reserva microservice: ', axiosResponse.data);
+
+    } catch (err) {
 
         return res
             .status(StatusCodes.INTERNAL_SERVER_ERROR)
