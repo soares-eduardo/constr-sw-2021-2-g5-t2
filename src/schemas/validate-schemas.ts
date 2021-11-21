@@ -30,6 +30,7 @@ export const newTurma = (body): ValidationResult => {
             ano: body.ano,
             semestre: body.semestre,
             disciplina: body.disciplina,
+            aula: body.aula,
             horario: body.horario
         }
     }
@@ -64,6 +65,13 @@ export const validateFieldsTurma = (body): ValidationResult => {
         return {
             statusCode: StatusCodes.BAD_REQUEST,
             message: '{Disciplina} is a required field.'
+        }
+    }
+
+    if (!body.aula || body.aula.length == 0) {
+        return {
+            statusCode: StatusCodes.BAD_REQUEST,
+            message: '{Aula} is a required field.'
         }
     }
 
